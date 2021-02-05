@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
-
+#define whatis(x) cout << #x << " = " << x << endl;
+#define whatis2(x, y) cout << #x << " = " << x << " and " << #y << " = " << y << endl;
 using namespace std;
 
 void merge(int arr[], int l, int m, int r) {
@@ -37,6 +38,7 @@ void merge(int arr[], int l, int m, int r) {
 }
 
 void mergesort(int arr[], int l, int r, int n) {
+    whatis2(l, r);
     //Base condition
     if (l >= r) {
         return;
@@ -44,6 +46,11 @@ void mergesort(int arr[], int l, int r, int n) {
     int m = (l + r) / 2;
     mergesort(arr, l, m, n);
     mergesort(arr, m + 1, r, n);
+    merge(arr, l, m, r);
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << "\n";
     //The array is already broken into single pieces
 }
 
@@ -54,4 +61,9 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
+    mergesort(arr, 0, n - 1, n);
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }
