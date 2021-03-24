@@ -4,7 +4,7 @@ typedef long long ll;
 using namespace std;
 const int mod = 1e9 + 7;
 const int n = 10e5;
-ll Modinv[n];
+ll DP[n];
 //Using modulo exponentiation
 ll binpow(ll base, ll power) {
     ll res = 1;
@@ -15,6 +15,7 @@ ll binpow(ll base, ll power) {
     }
     return res % mod;
 }
+
 //Using extended euclid algorithm
 ll extended(ll a, ll b, ll &x, ll &y) {
     if (b == 0) {
@@ -30,21 +31,21 @@ ll extended(ll a, ll b, ll &x, ll &y) {
 }
 //Program to calulate modulo multlipicaive inverse using dynammic programming
 void calc() {
-    Modinv[0] = Modinv[1] = 1;
+    DP[0] = DP[1] = 1;
     for (int i = 2; i < n; i++) {
-        Modinv[i] = (Modinv[mod % i] * (-(mod / i))) % mod;
-        Modinv[i] = (Modinv[i] + mod) % mod;
+        DP[i] = (DP[mod % i] * (-(mod / i))) % mod;
+        DP[i] = (DP[i] + mod) % mod; //To check the negative
     }
 }
+
 int main() {
     long long m = binpow(3, mod - 2);
     cout << m << endl;
     long long x, y;
+    //O(log(a))
     m = extended(3, mod, x, y);
-    if (x < 0) {
-        x = (x % mod + mod) % mod;
-    }
+    x = (x % mod + mod) % mod;
     cout << x << endl;
     calc();
-    cout << Modinv[3] << "\n";
+    cout << DP[3] << "\n";
 }
