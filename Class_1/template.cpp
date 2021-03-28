@@ -9,16 +9,7 @@ typedef unsigned long long ull;
 #define IOS                           \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
-#define testcase     \
-    long long testn; \
-    cin >> testn;    \
-    while (testn--)
-#define all(x) x.begin(), x.end(),
-#define pb push_back
-#define loop(i, n) for (ll i = 0; i < n; i++)
-#define loopn(i, n) for (ll i = 0; i <= n; i++)
-#define loop1(i, n) for (ll i = 1; i < n; i++)
-#define loop1n(i, n) for (ll i = 1; i <= n; i++)
+
 
 using namespace std;
 

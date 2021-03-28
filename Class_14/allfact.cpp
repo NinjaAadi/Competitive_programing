@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-
+#include<a
 
 //Program to find all the factors of the number
 using namespace std;
@@ -17,4 +17,6 @@ int main() {
     int n;
     cin >> n;
     print(n);
+    priority_queue<int>q;
+    priority_queue<int,vector<int>,greater<int>>q;
 }

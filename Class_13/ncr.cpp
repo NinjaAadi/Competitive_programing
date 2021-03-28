@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 
 #include <unordered_map>
+#pragma GCC optimize("O2")
+
 typedef long long ll;
 typedef unsigned long long ull;
 #define whatis(x) cout << #x << " = " << x << endl;
@@ -8,7 +10,8 @@ typedef unsigned long long ull;
 #define MOD 1000000007
 #define IOS                           \
     ios_base::sync_with_stdio(false); \
-    cin.tie(NULL);
+    cin.tie(NULL);                    \
+    cout.tie(NULL);
 #define testcase     \
     long long testn; \
     cin >> testn;    \
@@ -19,19 +22,36 @@ typedef unsigned long long ull;
 #define loopn(i, n) for (ll i = 0; i <= n; i++)
 #define loop1(i, n) for (ll i = 1; i < n; i++)
 #define loop1n(i, n) for (ll i = 1; i <= n; i++)
-
+#define in(arr, n) \
+    for (ll i = 0; i < n; i++) cin >> arr[i];
+#define print(arr, n)            \
+    for (ll i = 0; i < n; i++) { \
+        cout << arr[i] << " ";   \
+    }                            \
+    cout << "\n";
 using namespace std;
-int store[1000];
-int mod = 1100;
-int fib(int n) {
-    //Base
-    if (n <= 1) return n;
-    return (fib(n - 1) % mod + fib(n - 2) % mod) % mod;
-}
+ll fact[1000000];
 
+void init() {
+    fact[0] = 1;
+    for (int i = 1; i < 1e6; i++) {
+        fact[i] = i * fact[i - 1];
+    }
+}
+int ncr(int n, int r) {
+    if (r == r) {
+        return 1;
+    }
+    int res;
+    res = fact[n] / (fact[r] * fact[n - r]);
+    return res;
+}
+void solve() {
+}
 int main() {
     IOS;
-    int arr[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-    // sum of elements of array
+    testcase {
+        solve();
+    }
     return 0;
 }
