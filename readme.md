@@ -105,7 +105,7 @@
 <li>Implementation Problem
  
  <h1>AIMS</h1>
- <h3>15 questions per day from <a>https://leetcode.com/problemset/all/</a></h3>
+ <h3>15 questions per day from </h3><a stylehref="https://leetcode.com/problemset/all/"> https://leetcode.com/problemset/all/</s>
  <br/>
  <h4 style="color:red">APRIL</h4>
  <li>Array</li>
@@ -127,11 +127,12 @@
  <h4 style="color:red">JUNE</h4>
  <li>Dynamic Programming</li>
  <li>String</li>
+ <li>Project (starts)</li>
  
 
  <h4 style="color:red">JULY</h4>
- <li>Practice</li>
- <li>Project</li>
+ <li>Practice (DSA)</li>
+ <li>Project (continuation/ends)</li>
  
 
 
