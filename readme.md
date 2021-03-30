@@ -103,3 +103,39 @@
 <li>Gaussian Elimination</li>
 <h2  style="color:darkgreen">Game Theory </h2>
 <li>Implementation Problem
+ 
+ <h1>AIMS</h1>
+ <h3>15 questions per day from </h3><a stylehref="https://leetcode.com/problemset/all/"> https://leetcode.com/problemset/all/</a>
+ <br/>
+ <h4 style="color:red">APRIL</h4>
+ <li>Array</li>
+ <li>Linked List</li>
+ <li>Stack</li>
+ <li>Queue</li>
+ <li>DBMS</li>
+ <li>JAVA</li>
+ <li>HTML , CSS , JAVASCRIPT</li>
+
+ <h4 style="color:red">MAY</h4>
+ <li>Trees</li>
+ <li>Graphs</li>
+ <li>Backtracking</li>
+<li>React </li>
+<li>Node</li>
+<li>Mongodb</li>
+
+ <h4 style="color:red">JUNE</h4>
+ <li>Dynamic Programming</li>
+ <li>String</li>
+ <li>Project (starts)</li>
+ 
+
+ <h4 style="color:red">JULY</h4>
+ <li>Practice (DSA)</li>
+ <li>Project (continuation/ends)</li>
+ 
+
+
+
+
+ 
