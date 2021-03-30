@@ -105,7 +105,7 @@
 <li>Implementation Problem
  
  <h1>AIMS</h1>
- <h3>15 questions per day from </h3><a stylehref="https://leetcode.com/problemset/all/"> https://leetcode.com/problemset/all/</s>
+ <h3>15 questions per day from </h3><a stylehref="https://leetcode.com/problemset/all/"> https://leetcode.com/problemset/all/</a>
  <br/>
  <h4 style="color:red">APRIL</h4>
  <li>Array</li>
