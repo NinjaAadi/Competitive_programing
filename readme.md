@@ -103,3 +103,41 @@
 <li>Gaussian Elimination</li>
 <h2  style="color:darkgreen">Game Theory </h2>
 <li>Implementation Problem
+ 
+ <h2>AIMS</h2>
+ <br/>
+ <h4 style="color:red">APRIL</h4>
+ <h6>15 questions per day from <a></a></h6>
+ <li>Array</li>
+ <li>Linked List</li>
+ <li>Stack</li>
+ <li>Queue</li>
+ <li>DBMS</li>
+ <li>JAVA</li>
+ <li>HTML , CSS , JAVASCRIPT</li>
+
+ <h4 style="color:red">MAY</h4>
+ <h6>15 questions per day from <a></a></h6>
+ <li>Trees</li>
+ <li>Graphs</li>
+ <li>Backtracking</li>
+<li>React </li>
+<li>Node</li>
+<li>Mongodb</li>
+
+ <h4 style="color:red">JUNE</h4>
+ <h6>15 questions per day from <a></a></h6>
+ <li>Dynamic Programming</li>
+ <li>String</li>
+ 
+
+ <h4 style="color:red">JULY</h4>
+ <h6>15 questions per day from <a></a></h6>
+ <li>Practice</li>
+ <li>Project</li>
+ 
+
+
+
+
+ 
