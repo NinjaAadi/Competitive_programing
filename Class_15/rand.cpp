@@ -33,7 +33,7 @@ using namespace std;
 
 void solve() {
     srand(time(0));
-    int n = 1e7;
+    int n = 1e4;
     cout << n << endl;
     for (int i = 0; i < n; i++) {
         cout << rand() % 1000 << " ";

@@ -31,7 +31,6 @@ int partition(int arr[], int l, int r) {
 int n;
 //Quick sort function
 void quicksort(int l, int r, int arr[]) {
-    whatis2(l,r);
     if (l > r) {
         return;
     }
@@ -44,7 +43,7 @@ int main() {
     ios_base::sync_with_stdio(false);
     srand(time(NULL));
     cin >> n;
-
+    int arr[n];
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
