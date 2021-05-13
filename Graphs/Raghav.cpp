@@ -5,12 +5,12 @@ const int N = 1000;
 vector<int> tree[N];
 
 void dfs(int curr, int parent, int search){
-    for(int i = 0; i < tree[curr].size(); i++){
-        if(tree[curr][i] == parent) continue;
-        if(tree[curr][i] == search) {
+    if(curr == search) {
           cout<<"Found";
           return;
-        }
+    }
+    for(int i = 0; i < tree[curr].size(); i++){
+        if(tree[curr][i] == parent) continue;
         dfs(tree[curr][i], curr, search);  
     }
 }
