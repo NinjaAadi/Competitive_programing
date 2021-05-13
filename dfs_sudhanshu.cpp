@@ -19,6 +19,7 @@ void dfs(int curr,int parent,int key)
         }
         dfs(a,curr,key);
     }
+    cout<<"Not Found";
 }
 
 int main()
