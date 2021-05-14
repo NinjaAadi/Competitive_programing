@@ -1,4 +1,17 @@
-Node 1 : (2,3),(4,2),
-Node 2 : (3,5),
-Node 3 : 
-Node 4 : (3,1),
+Currently in 1
+Currently in 2
+Currently in 3
+Currently in 4
+4 is ending
+Currently in 3
+3 is ending
+Currently in 2
+Currently in 5
+5 is ending
+Currently in 2
+2 is ending
+Currently in 1
+Currently in 6
+6 is ending
+Currently in 1
+1 is ending

@@ -1,9 +1,6 @@
-#include <algorithm>
-#include <iostream>
-#include <unordered_map>
-#include <vector>
+#include <bits/stdc++.h>
 #pragma GCC optimize("O2")
-
+#include<iterator>
 typedef long long ll;
 typedef unsigned long long ull;
 #define whatis(x) cout << #x << " = " << x << endl;

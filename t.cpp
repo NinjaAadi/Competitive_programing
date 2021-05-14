@@ -1,31 +1,42 @@
-class Solution {
-   public:
-    string h(int a, int b) {
-        if (a == b) {
-            return to_string(a);
-        }
-        return to_string(a) + "->" + to_string(b);
-    }
-    vector<string> summaryRanges(vector<int>& arr) {
-        if (arr.size() == 1) {
-            return {to_string(arr[0])};
-        }
-        int s = 0;
-        int e = 0;
-        int n = arr.size();
-        arr.push_back(LONG_MAX);
-        vector<string> res;
-        int i = 0;
-        while (i < n) {
-            int s = i;
-            int e = i;
-            while (arr[i + 1] - arr[i] == 0 || arr[i + 1] - arr[i] == 1) {
-                i++;
+#include <bits/stdc++.h>
+
+using namespace std;
+
+struct Node {
+    int val;
+    Node *next;
+};
+
+struct LinkedList {
+    Node *head = NULL;
+    void insert(int val) {
+        if (head == NULL) {
+            head = (Node *)malloc(sizeof(Node));
+            head->val = val;
+            head->next = NULL;
+        } else {
+            Node *temp = head;
+            while (temp->next != NULL) {
+                temp = temp->next;
             }
-            e = i;
-            res.push_back(h(arr[s], arr[e]));
-            i++;
+            temp->next = (Node *)malloc(sizeof(Node));
+            temp->next->val = val;
         }
-        return res;
+    };
+    void print() {
+        Node *temp = head;
+        while (temp != NULL) {
+            cout << temp->val << "->";
+            temp = temp->next;
+        }
+        cout << "NULL\n";
     }
 };
+int main() {
+    LinkedList *l1 = new LinkedList();
+    l1->insert(1);
+    l1->insert(2);
+    l1->insert(3);
+    l1->print();
+}
+

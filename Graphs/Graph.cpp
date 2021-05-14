@@ -5,8 +5,6 @@ using namespace std;
 
 const int N = 100000;
 
-//int graph[N][N];
-
 vector<pair<int, int> > graph[N];
 
 void init() {
@@ -21,7 +19,8 @@ void init() {
 int main() {
     init();
     //Take input of total number of vertices and total edges
-    int v, e;
+    int v,
+        e;
     cin >> v >> e;
     // for (int i = 0; i < e; i++) {
     //     int a, b, w;
