@@ -20,6 +20,7 @@ int build(int tl, int tr, int segid) {
 }
 
 int pointupdateutil(int tl, int tr, int segid, int ele, int id) {
+    if (id < tl || id > tr) return segtree[segid];
     if (tl == tr) {
         segtree[segid] = ele;
         return ele;
@@ -27,10 +28,9 @@ int pointupdateutil(int tl, int tr, int segid, int ele, int id) {
     int m = (tl + tr) / 2;
     int left = INT_MAX;
     int right = INT_MAX;
-    if (id >= tl && id <= m)
-        left = pointupdateutil(tl, m, 2 * segid + 1, ele, id);
-    if (id >= m + 1 && id <= tr)
-        right = pointupdateutil(m + 1, tr, 2 * segid + 2, ele, id);
+
+    left = pointupdateutil(tl, m, 2 * segid + 1, ele, id);
+    right = pointupdateutil(m + 1, tr, 2 * segid + 2, ele, id);
     int curr = min(left, right);
     curr = min(curr, segtree[segid]);
     return segtree[segid] = curr;
@@ -43,7 +43,7 @@ int queryutil(int tl, int tr, int ql, int qr, int segid) {
     }
     //Completely outside the range
     if (tr < ql || tl > qr) {
-        return INT_MAX;
+        return segtree[segid];
     }
 
     //Partial overlap
