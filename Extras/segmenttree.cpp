@@ -1,107 +1,96 @@
 #include <bits/stdc++.h>
 
-#include <unordered_map>
-typedef long long ll;
-typedef unsigned long long ull;
-#define whatis(x) cout << #x << " = " << x << endl;
-#define whatis2(x, y) cout << #x << " = " << x << " and " << #y << " = " << y << endl;
-#define MOD 1000000007
-#define IOS                           \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(NULL);
-#define testcase     \
-    long long testn; \
-    cin >> testn;    \
-    while (testn--)
-#define all(x) x.begin(), x.end(),
-#define pb push_back
-#define loop(i, n) for (ll i = 0; i < n; i++)
-#define loopn(i, n) for (ll i = 0; i <= n; i++)
-#define loop1(i, n) for (ll i = 1; i < n; i++)
-#define loop1n(i, n) for (ll i = 1; i <= n; i++)
-
 using namespace std;
-const int N = 2e6;
-ll tree[N];
 
-void buildtree(ll arr[], ll n, ll ind, ll l, ll r) {
-    if (l == r) {
-        tree[ind] = arr[l];
-        return;
+vector<int> segtree;
+vector<int> arr;
+
+//build the segment tree
+int build(int tl, int tr, int segid) {
+    //base case
+    if (tl == tr) {
+        segtree[segid] = arr[tl];
+        return arr[tl];
     }
-    ll m = (l + r) / 2;
-    buildtree(arr, n, 2 * ind, l, m);
-    buildtree(arr, n, 2 * ind + 1, m + 1, r);
-    tree[ind] = min(tree[2 * ind], tree[2 * ind + 1]);
+    int m = (tl + tr) / 2;
+    int left = build(tl, m, 2 * segid + 1);
+    int right = build(m + 1, tr, 2 * segid + 2);
+
+    return segtree[segid] = min(left, right);
 }
-void query(ll arr[], ll ql, ll qr, ll tl, ll tr, ll &ans, ll ind) {
-    //Completely overlapping
+
+int pointupdateutil(int tl, int tr, int segid, int ele, int id) {
+    if (tl == tr) {
+        segtree[segid] = ele;
+        return ele;
+    }
+    int m = (tl + tr) / 2;
+    int left = INT_MAX;
+    int right = INT_MAX;
+    if (id >= tl && id <= m)
+        left = pointupdateutil(tl, m, 2 * segid + 1, ele, id);
+    if (id >= m + 1 && id <= tr)
+        right = pointupdateutil(m + 1, tr, 2 * segid + 2, ele, id);
+    int curr = min(left, right);
+    curr = min(curr, segtree[segid]);
+    return segtree[segid] = curr;
+}
+int queryutil(int tl, int tr, int ql, int qr, int segid) {
+    //base case
+    // 1 -> Completely overlap
     if (tl >= ql && tr <= qr) {
-        ans = min(ans, tree[ind]);
-        return;
+        return segtree[segid];
     }
-    //Completely out
-    if (tl > qr || tr < ql) {
-        return;
+    //Completely outside the range
+    if (tr < ql || tl > qr) {
+        return INT_MAX;
     }
 
-    ///Partially overlaps
-    ll m = (tl + tr) / 2;
-    query(arr, ql, qr, tl, m, ans, 2 * ind);
-    query(arr, ql, qr, m + 1, tr, ans, 2 * ind + 1);
+    //Partial overlap
+    int mid = (tl + tr) / 2;
+    return min(queryutil(tl, mid, ql, qr, 2 * segid + 1), queryutil(mid + 1, tr, ql, qr, 2 * segid + 2));
 }
-void pointupdate(ll pos, ll val, ll tl, ll tr, ll ind) {
+void rangeupdateutil(int tl, int tr, int ul, int ur, int segid, int diff) {
     if (tl == tr) {
-        tree[ind] = val;
+        segtree[segid] += diff;
         return;
     }
-    ll m = (tl + tr) / 2;
-    if (pos >= tl && pos <= m) {
-        pointupdate(pos, val, tl, m, 2 * ind);
-        tree[ind] = min(tree[2 * ind], tree[2 * ind + 1]);
-    } else {
-        pointupdate(pos, val, m + 1, tr, 2 * ind + 1);
-        tree[ind] = min(tree[2 * ind], tree[2 * ind + 1]);
-    }
-}
-void rangeupdate(ll val, ll tl, ll tr, ll ql, ll qr, ll ind) {
-    if (tl == tr) {
-        tree[ind] += val;
+    if (ur < tl || ul > tr) {
         return;
     }
-    if (tr < ql || tl > qr) return;
-    ll m = (tl + tr) / 2;
-    rangeupdate(val, tl, m, ql, qr, 2 * ind);
-    rangeupdate(val, m + 1, tr, ql, qr, 2 * ind + 1);
-    tree[ind] = tree[2 * ind] + tree[2 * ind + 1];
-}
+    int mid = (tl + tr) / 2;
+    rangeupdateutil(tl, mid, ul, ur, 2 * segid + 1, diff);
+    rangeupdateutil(mid + 1, tr, ul, ur, 2 * segid + 2, diff);
 
-void solve() {
-    ll n, q;
-    cin >> n >> q;
-    ll arr[n];
-    for (ll i = 0; i < n; i++) {
-        cin >> arr[i];
-    }
-    memset(tree, 0, sizeof(tree));
-    buildtree(arr, n, 1, 0, n - 1);
-    while (q--) {
-        ll a, b, c;
-        cin >> a >> b >> c;
-        if (a == 1) {
-            b--;
-            pointupdate(b, c, 0, n - 1, 1);
-        } else {
-            ll ans = INT_MAX;
-            b--;
-            c--;
-            query(arr, b, c, 0, n - 1, ans, 1);
-            cout << ans << "\n";
-        }
-    }
+    segtree[segid] = min(segtree[2 * segid + 1], segtree[2 * segid + 2]);
+}
+int n;
+int query(int l, int r) {
+    return queryutil(0, n - 1, l, r, 0);
+}
+void pointupdate(int i, int newele) {
+    int dummy = pointupdateutil(0, n - 1, 0, newele, i);
+}
+void rangeupdate(int l, int r, int diff) {
+    rangeupdateutil(0, n - 1, l, r, 0, diff);
 }
 int main() {
-    IOS;
-    solve();
-    return 0;
+    cin >> n;
+    arr.resize(n);
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    //resize seg tree
+    segtree.resize(4 * n + 1);
+    build(0, n - 1, 0);
+    // cout << query(1, 3) << endl;
+    // pointupdate(1, 5);
+    // cout << query(1, 3) << endl;
+    // pointupdate(3, 10);
+    // cout << query(1, 3) << endl;
+    rangeupdate(1, 3, 10);
+    cout << query(1, 3) << endl;
+    rangeupdate(7, 9, 10);
+    cout << query(7, 9) << endl;
 }
