@@ -1,0 +1,9 @@
+code input01.txt output01.txt
+code input02.txt output02.txt
+code input03.txt output03.txt
+code input04.txt output04.txt
+code input05.txt output05.txt
+code input06.txt output06.txt
+code input07.txt output07.txt
+code input08.txt output08.txt
+code input09.txt output09.txt
