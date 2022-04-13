@@ -73,6 +73,7 @@
 <li>Longest Common Substring</li>
 <li>Longest Palindromic Subsequence</li>
 <li>Longest Palindromic Substring</li>
+<li>Longest Increasing Subsequence (Both O(N<sup>2</sup>), O(NLog(N)))</li>
 <li>Subset Sum Problem</li>
 <li>Road Cutting problem</li>
 <li>Coin Change Problem</li>
