@@ -1,8 +1,0 @@
-map<pair<int,int>,unordered_map<int,int>>m;
-1 2 5
-1 2 6
-1 2 9
-m[{1,2}][5]++;
-m[{1,2}][6]++;
-m[{1,2}][9]++;
-
